@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woody - Premium Furniture Store</title>
+    <style>
+        :root {
+            --wood-primary: #8B4513;
+            --wood-secondary: #A0522D;
+            --wood-light: #D2691E;
+            --wood-dark: #654321;
+            --cream: #F5E6D3;
+            --cream-dark: #E8D5C4;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cream);
+            color: var(--wood-dark);
+        }
+
+        /* Fixed Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--wood-dark);
+            padding: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--wood-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--white);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .brand-text h1 {
+            font-size: 26px;
+            color: var(--cream);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            color: var(--cream-dark);
+            font-style: italic;
+            margin-top: -2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--cream);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--wood-secondary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--wood-light);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav ul li a:hover::after {
+            width: 80%;
+        }
+
+        /* Landing Page Section */
+        .landing {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(101, 67, 33, 0.5), rgba(139, 69, 19, 0.4)), 
+                              url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .landing-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            padding: 40px;
+            z-index: 2;
+        }
+
+        .landing-content h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+        }
+
+        .landing-content p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: var(--wood-light);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--wood-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Login Form */
+        .login-container {
+            position: absolute;
+            top: 50%;
+            right: 8%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            width: 360px;
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--wood-light);
+        }
+
+        .login-container h3 {
+            text-align: center;
+            color: var(--wood-dark);
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--wood-dark);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--cream-dark);
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: var(--cream);
+            color: var(--wood-dark);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--wood-light);
+            background-color: var(--white);
+            box-shadow: 0 0 12px rgba(210, 105, 30, 0.3);
+            transform: scale(1.02);
+        }
+
+        .form-group input:hover {
+            border-color: var(--wood-secondary);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .form-options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--wood-dark);
+            cursor: pointer;
+        }
+
+        .form-options a {
+            color: var(--wood-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .form-options a:hover {
+            color: var(--wood-secondary);
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--wood-primary), var(--wood-secondary));
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, var(--wood-secondary), var(--wood-light));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.5);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--wood-dark);
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: var(--wood-light);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: var(--wood-secondary);
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .login-container {
+                right: 5%;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-container {
+                flex-wrap: wrap;
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .login-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                margin: 40px auto;
+                max-width: 90%;
+            }
+
+            .landing {
+                flex-direction: column;
+                padding: 100px 20px 60px;
+            }
+
+            .landing-content h2 {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .brand-text h1 {
+                font-size: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            .landing-content h2 {
+                font-size: 32px;
+            }
+
+            .landing-content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navigation Bar -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">W</div>
+                <div class="brand-text">
+                    <h1>WOODY</h1>
+                    <p>Crafting Comfort, Naturally</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Landing Page Section -->
+    <section class="landing" id="home">
+        <div class="landing-content">
+            <h2>Welcome to Woody</h2>
+            <p>Discover premium handcrafted furniture that brings warmth and elegance to your home. Every piece tells a story of craftsmanship and natural beauty.</p>
+            <a href="#products" class="cta-button">Explore Collection</a>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-container">
+            <h3>Member Login</h3>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#forgot">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div class="signup-link">
+                    Don't have an account? <a href="#signup">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
